@@ -12,25 +12,25 @@
 
 Matrix :: Matrix()
 {
-    m.resize(3);
-    for (int i = 0; i <3; i++)
-        for (int j = 0; i < 3; j++)
+    m.resize(4);
+    for (int i = 0; i <= 3; i++)
+        for (int j = 0; i <= 3; j++)
             m[i][j] = 0;
 }
 
 bool Matrix :: left()
 {
     bool order = false;
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i <= 3; i++)
     {
         vector <int> line = m[i];
-        for (int j = 0; j< 3; j++)
+        for (int j = 0; j<= 3; j++)
         {
             if (line[j] != line[j+1] && line[j+1] != 0)
                 continue;
             if (line[j] == 0)
                 continue;
-            for (int k = j+1; k < 3; k++)
+            for (int k = j+1; k <= 3; k++)
             {
                 if (line[j] == line[k] && line[j] != 0)
                 {
@@ -43,10 +43,10 @@ bool Matrix :: left()
                                              
         }
     }
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i <= 3; i++)
     {
         vector <int> line = m[i];
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j <= 3; j++)
         {
             if (line[j] == 0)
                 continue;
@@ -61,6 +61,33 @@ bool Matrix :: left()
                         order = true;
                         j = k;
                     }
+                }
+            }
+        }
+    }
+    return order;
+}
+
+bool Matrix::right()
+{
+    bool order = false;
+    for (int i = 0; i <= 3; i++)
+    {
+        vector <int> line = m[i];
+        for (int j = 3; j >= 0; j--)
+        {
+            if (line[j] != line[j-1] && line[j-1] != 0)
+                continue;
+            if (line[j] == 0)
+                continue;
+            for (int k = j-1; k >= 0; k--)
+            {
+                if (line[j] == line[k])
+                {
+                    line[j] = line[k];
+                    line[j] = 0;
+                    order = true;
+                    break;
                 }
             }
         }
