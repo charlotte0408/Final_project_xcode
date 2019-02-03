@@ -21,16 +21,16 @@ Matrix :: Matrix()
 bool Matrix :: left()
 {
     bool order = false;
-    for (int i = 0; i <= 3; i++)
+    for (int i = 0; i <= 3; i++) // loop through rows
     {
         vector <int> line = m[i];
-        for (int j = 0; j< 3; j++)
+        for (int j = 0; j< 3; j++) // start from the most left
         {
-            if (line[j] != line[j+1] && line[j+1] != 0)
+            if (line[j+1] != 0 && line[j] != line[j+1]) // if jth is not equal to its next and its next is not empty, move to the next spot
                 continue;
-            if (line[j] == 0)
+            if (line[j] == 0) // if jth is empty, move to the next spot
                 continue;
-            for (int k = j+1; k <= 3; k++)
+            for (int k = j+1; k <= 3; k++) // if (j+1)th is empty or jth is equal to its next
             {
                 if (line[j] == line[k])
                 {
@@ -56,10 +56,9 @@ bool Matrix :: left()
                 {
                     if (line[k] == 0)
                     {
-                        line[k] = line[j];
+                        line[k] = line[j]; // push the next non-empty sopt to the left first empty element
                         line[k] = 0;
                         order = true;
-                        j = k;
                         break;
                     }
                 }
@@ -75,9 +74,9 @@ bool Matrix::right()
     for (int i = 0; i <= 3; i++)
     {
         vector <int> line = m[i];
-        for (int j = 3; j >= 1; j--)
+        for (int j = 3; j >= 1; j--) // start from the right most
         {
-            if (line[j] != line[j-1] && line[j-1] != 0)
+            if (line[j] != line[j-1] && line[j-1] != 0) // next two are nonempty and not the same
                 continue;
             if (line[j] == 0)
                 continue;
@@ -109,7 +108,6 @@ bool Matrix::right()
                         line[k] = line[j];
                         line[j] = 0;
                         order = true;
-                        j = k;
                         break;
                     }
                 }
