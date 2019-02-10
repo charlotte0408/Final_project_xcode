@@ -18,7 +18,7 @@ class Matrix
 {
 public:
     
-    Matrix(int row, int col);
+    Matrix(int row = 4, int col = 4);
     bool left();
     bool right();
     bool up();
