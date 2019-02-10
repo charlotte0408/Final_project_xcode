@@ -15,7 +15,7 @@ Matrix :: Matrix()
     m.resize(4);
     for (int i = 0; i <= 3; i++)
         for (int j = 0; i <= 3; j++)
-            m[i][j] = 0;
+            m[i][j] = i+j;
 }
 
 bool Matrix :: left()
@@ -121,6 +121,24 @@ bool Matrix::right()
 Matrix Matrix::rotate_clock()
 {
     Matrix A;
+    for (int i = 0; i <= 3; i++)
+    {
+        for (int j = i; j <= 3; j++)
+        {
+            int tmp = A.m[j][i];
+            A.m[j][i] = A.m[i][j];
+            A.m[i][j] = tmp;
+        }
+    }
+    for (int i = 0; i <= 3; i++)
+    {
+        for (int j = 0; j <= 1; j++)
+        {
+            int copy = A.m[i][3-j];
+            A.m[i][3-j] = A.m[i][j];
+            A.m[i][j] = copy;
+        }
+    }
     return A;
 }
 
