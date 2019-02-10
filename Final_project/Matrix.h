@@ -22,6 +22,8 @@ public:
     bool right();
     bool up();
     bool down();
+    Matrix rotate_clock();
+    Matrix rotate_counterclock();
 private:
     vector<vector<int>> m;
     

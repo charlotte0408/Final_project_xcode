@@ -118,6 +118,18 @@ bool Matrix::right()
     return order;
 }
 
+Matrix Matrix::rotate_clock()
+{
+    Matrix A;
+    return A;
+}
+
+Matrix Matrix::rotate_counterclock()
+{
+    Matrix B;
+    return B;
+}
+
 bool Matrix::up()
 {
     bool order = false;
