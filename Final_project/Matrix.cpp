@@ -145,8 +145,26 @@ Matrix Matrix::rotate_clock()
 
 Matrix Matrix::rotate_counterclock()
 {
-    Matrix B;
-    return B;
+    Matrix A;
+    for (int i = 0; i <= 3; i++)
+    {
+        for (int j = i; j <= 3; j++)
+        {
+            int tmp = A.m[j][i];
+            A.m[j][i] = A.m[i][j];
+            A.m[i][j] = tmp;
+        }
+    }
+    for (int i = 0; i <= 1; i++)
+    {
+        for (int j = 0; j <= 3; j++)
+        {
+            int tmp = A.m[3-i][j];
+            A.m[3-i][j] = A.m[i][j];
+            A.m[i][j] = tmp;
+        }
+    }
+    return A;
 }
 
 bool Matrix::up()
