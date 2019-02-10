@@ -117,3 +117,10 @@ bool Matrix::right()
     }
     return order;
 }
+
+bool Matrix::up()
+{
+    bool order = false;
+    
+    return order;
+}
