@@ -24,6 +24,7 @@ public:
     bool down();
     Matrix rotate_clock();
     Matrix rotate_counterclock();
+    void print();
 private:
     vector<vector<int>> m;
     

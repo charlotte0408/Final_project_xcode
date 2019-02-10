@@ -6,9 +6,12 @@
 //  Copyright © 2019 Yihuan Huang. All rights reserved.
 //
 #include <iostream>
+#include <vector>
+#include "Matrix.h"
+
+using namespace std;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+    Matrix m;
+    m.rotate_clock();
 }
