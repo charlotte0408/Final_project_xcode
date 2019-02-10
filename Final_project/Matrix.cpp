@@ -185,6 +185,21 @@ bool Matrix::down()
     return order;
 }
 
+bool Matrix::endgame()
+{
+    if (left() == false && right() == false && up() == false && down() == false && full() == true)
+    {
+        cout << "Unfortunately, you lose! BUT life goes on";
+        return true;
+    }
+    if (find2048())
+    {
+        cout << "2048 GOTCHA. You win!!!!";
+        return true;
+    }
+    return false;
+}
+
 void Matrix::print()
 {
     for (int i = 0; i <= 3; i++)

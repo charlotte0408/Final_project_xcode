@@ -23,6 +23,9 @@ public:
     bool right();
     bool up();
     bool down();
+    bool full();
+    bool find2048();
+    bool endgame();
     Matrix rotate_clock();
     Matrix rotate_counterclock();
     void print();
