@@ -170,7 +170,18 @@ Matrix Matrix::rotate_counterclock()
 bool Matrix::up()
 {
     bool order = false;
-    
+    Matrix A = this -> rotate_clock();
+    if (A.left() == true)
+        order = true;
+    return order;
+}
+
+bool Matrix::down()
+{
+    bool order = true;
+    Matrix A = this -> rotate_counterclock();
+    if (A.right() == true)
+        order = true;
     return order;
 }
 
