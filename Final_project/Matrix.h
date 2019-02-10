@@ -17,7 +17,8 @@ using namespace std;
 class Matrix
 {
 public:
-    Matrix();
+    
+    Matrix(int value = 0);
     bool left();
     bool right();
     bool up();

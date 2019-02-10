@@ -10,12 +10,13 @@
 #include <iostream>
 #include <vector>
 
-Matrix :: Matrix()
+Matrix :: Matrix(int value)
 {
     m.resize(4);
     for (int i = 0; i <= 3; i++)
-        for (int j = 0; i <= 3; j++)
-            m[i][j] = i+j;
+        for (int j = 0; j <= 3; j++)
+            m[i].push_back(i+j);
+    
 }
 
 bool Matrix :: left()
@@ -117,7 +118,7 @@ bool Matrix::right()
     }
     return order;
 }
-
+ 
 Matrix Matrix::rotate_clock()
 {
     Matrix A;
@@ -164,3 +165,5 @@ void Matrix::print()
         cout << endl;
     }
 }
+
+
