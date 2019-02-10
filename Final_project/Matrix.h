@@ -18,7 +18,7 @@ class Matrix
 {
 public:
     
-    Matrix(int value = 0);
+    Matrix(int row, int col);
     bool left();
     bool right();
     bool up();
@@ -29,6 +29,7 @@ public:
     Matrix rotate_clock();
     Matrix rotate_counterclock();
     void print();
+    void random();
 private:
     vector<vector<int>> m;
     

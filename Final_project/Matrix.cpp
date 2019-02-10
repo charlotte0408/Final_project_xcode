@@ -9,13 +9,14 @@
 #include "Matrix.h"
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 
-Matrix :: Matrix(int value)
+Matrix :: Matrix(int row, int col)
 {
-    m.resize(4);
-    for (int i = 0; i <= 3; i++)
-        for (int j = 0; j <= 3; j++)
-            m[i].push_back(i+j);
+    m.resize(row);
+    for (int i = 0; i <= col; i++)
+        for (int j = 0; j <= col; j++)
+            m[i].push_back(0);
     
 }
 
@@ -218,6 +219,34 @@ bool Matrix::find2048()
                 return true;
         }
     return false;
+}
+
+void Matrix::random()
+{
+    Matrix check (2,16);
+    int count = 0;
+    for (int i = 0; i <= 3; i++)
+    {
+        for (int j = 0; j <= 3; j++)
+        {
+            if (m[i][j] == 0)
+            {
+                check.m[0][count] = i;
+                check.m[1][count] = j;
+                count ++;
+            }
+        }
+    }
+    int position = rand() / count - 1;
+    int rn = rand() / 9;
+    int next = 0;
+    if (rn <= 8)
+        next = 2;
+    else
+        next = 4;
+    int i = check.m[0][position];
+    int j = check.m[1][position];
+    m[i][j] = next;
 }
 
 void Matrix::print()

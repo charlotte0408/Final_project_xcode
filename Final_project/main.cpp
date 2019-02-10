@@ -7,11 +7,12 @@
 //
 #include <iostream>
 #include <vector>
+#include <ctime>
+
 #include "Matrix.h"
 
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    Matrix m;
-    m.rotate_clock();
+    srand((int) time(0));
 }
