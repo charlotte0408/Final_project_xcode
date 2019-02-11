@@ -13,7 +13,7 @@
 
 Matrix :: Matrix(int row, int col)
 {
-    m.resize(row);
+    m.resize(row+1);
     for (int i = 0; i <= col; i++)
         for (int j = 0; j <= col; j++)
             m[i].push_back(0);
