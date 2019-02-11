@@ -20,6 +20,8 @@ int main(int argc, const char * argv[]) {
         cout << "Game started!!!" << endl;
         cout << "------------------------" << endl;
         Matrix A;
+        A.random();
+        A.random();
         A.print();
         int count = 0;
         while (!A.endgame())

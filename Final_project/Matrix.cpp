@@ -14,7 +14,7 @@
 Matrix :: Matrix(int row, int col)
 {
     m.resize(row+1);
-    for (int i = 0; i <= col; i++)
+    for (int i = 0; i <= row; i++)
         for (int j = 0; j <= col; j++)
             m[i].push_back(0);
     
@@ -223,7 +223,7 @@ bool Matrix::find2048()
 
 void Matrix::random()
 {
-    Matrix check (2,16);
+    Matrix check (1,15);
     int count = 0;
     for (int i = 0; i <= 3; i++)
     {
@@ -237,8 +237,8 @@ void Matrix::random()
             }
         }
     }
-    int position = rand() / count - 1;
-    int rn = rand() / 9;
+    int position = rand() % (count - 1);
+    int rn = rand() % 9;
     int next = 0;
     if (rn <= 8)
         next = 2;
