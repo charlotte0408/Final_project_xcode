@@ -41,7 +41,6 @@ int main(int argc, const char * argv[]) {
             }
             else if (move == "a")
             {
-                cout << "good" << endl;
                 bool order = A.left();
                 if (order)
                     count++;
