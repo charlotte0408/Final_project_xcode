@@ -26,7 +26,7 @@ int main(int argc, const char * argv[]) {
         int count = 0;
         while (!A.endgame())
         {
-            string move;
+            string move = "";
             cout << "Enter your movement: w(move up), a(move left), s(move down), d(move right)";
             getline (cin, move);
             if (move == "w")
@@ -41,6 +41,7 @@ int main(int argc, const char * argv[]) {
             }
             else if (move == "a")
             {
+                cout << "good" << endl;
                 bool order = A.left();
                 if (order)
                     count++;

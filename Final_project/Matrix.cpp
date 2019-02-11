@@ -59,7 +59,8 @@ bool Matrix :: left()
                     if (line[k] == 0)
                     {
                         line[k] = line[j]; // push the next non-empty sopt to the left first empty element
-                        line[k] = 0;
+                        line[j] = 0;
+                        cout << line[k] << endl;
                         order = true;
                         break;
                     }
@@ -186,12 +187,16 @@ bool Matrix::down()
 
 bool Matrix::endgame()
 {
-    if (left() == false && right() == false && up() == false && down() == false && full() == true)
+    Matrix clone;
+    for (int i = 0; i <= 3; i++)
+        for (int j = 0; j <= 3; j++)
+            clone.m[i][j] = this -> m[i][j];
+    if (clone.left() == false && clone.right() == false && clone.up() == false && clone.down() == false && clone.full() == true)
     {
         cout << "Unfortunately, you lose! BUT life goes on";
         return true;
     }
-    if (find2048())
+    if (clone.find2048())
     {
         cout << "2048 GOTCHA. You win!!!!";
         return true;
