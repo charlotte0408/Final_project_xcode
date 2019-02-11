@@ -37,7 +37,6 @@ bool Matrix :: left()
                 if (line[j] == line[k])
                 {
                     m[i][j] = 2 * m[i][j];
-                    cout << line[j];
                     m[i][k] = 0;
                     order = true;
                     break;
@@ -49,21 +48,22 @@ bool Matrix :: left()
     for (int i = 0; i <= 3; i++)
     {
         vector <int> line = m[i];
-        for (int j = 0; j <= 3; j++)
+        for (int j = 1; j <= 3; j++)
         {
             if (line[j] == 0)
                 continue;
             else
             {
-                for (int k = j-1; k >= 0; k--)
+                int k = 0;
+                while (k < j)
                 {
-                    if (line[k] == 0)
-                    {
-                        m[i][k] = m[i][j]; // push the next non-empty sopt to the left first empty element
+                    if (line[k] == 0){
+                        m[i][k] = m[i][j];
                         m[i][j] = 0;
                         order = true;
                         break;
                     }
+                    k++;
                 }
             }
         }
@@ -104,17 +104,17 @@ bool Matrix::right()
                 continue;
             else
             {
-                for (int k = j+1; k <= 3; k++)
+                int k = j + 1;
+                while (k > 0)
                 {
-                    if (line[k] == 0)
-                    {
-                        m[i][k] = line[j];
+                    if (line[k] == 0){
+                        m[i][k] = m[i][j];
                         m[i][j] = 0;
                         order = true;
                         break;
                     }
+                    k--;
                 }
-                
             }
         }
     }

@@ -69,7 +69,7 @@ int main(int argc, const char * argv[]) {
                     continue;
                 }
             }
-            else if (move == "D")
+            else if (move == "d")
             {
                 bool order = A.right();
                 if (order)
