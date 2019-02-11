@@ -104,8 +104,8 @@ bool Matrix::right()
                 continue;
             else
             {
-                int k = j + 1;
-                while (k > 0)
+                int k = 3;
+                while (k > j)
                 {
                     if (line[k] == 0){
                         m[i][k] = m[i][j];
@@ -123,66 +123,64 @@ bool Matrix::right()
  
 Matrix Matrix::rotate_clock()
 {
-    Matrix A;
     for (int i = 0; i <= 3; i++)
     {
         for (int j = i; j <= 3; j++)
         {
-            int tmp = A.m[j][i];
-            A.m[j][i] = A.m[i][j];
-            A.m[i][j] = tmp;
+            int tmp = m[j][i];
+            m[j][i] = m[i][j];
+            m[i][j] = tmp;
         }
     }
     for (int i = 0; i <= 3; i++)
     {
         for (int j = 0; j <= 1; j++)
         {
-            int copy = A.m[i][3-j];
-            A.m[i][3-j] = A.m[i][j];
-            A.m[i][j] = copy;
+            int copy = m[i][3-j];
+            m[i][3-j] = m[i][j];
+            m[i][j] = copy;
         }
     }
-    return A;
+    return *this;
 }
 
 Matrix Matrix::rotate_counterclock()
 {
-    Matrix A;
     for (int i = 0; i <= 3; i++)
     {
         for (int j = i; j <= 3; j++)
         {
-            int tmp = A.m[j][i];
-            A.m[j][i] = A.m[i][j];
-            A.m[i][j] = tmp;
+            int tmp = m[j][i];
+            m[j][i] = m[i][j];
+            m[i][j] = tmp;
         }
     }
     for (int i = 0; i <= 1; i++)
     {
         for (int j = 0; j <= 3; j++)
         {
-            int tmp = A.m[3-i][j];
-            A.m[3-i][j] = A.m[i][j];
-            A.m[i][j] = tmp;
+            int tmp = m[3-i][j];
+            m[3-i][j] = m[i][j];
+            m[i][j] = tmp;
         }
     }
-    return A;
+    return *this;
 }
 
 bool Matrix::up()
 {
-    Matrix A = this -> rotate_clock();
-    if (A.left() == true)
-        return true;
-    return false;
+    Matrix A = this -> rotate_counterclock();
+    bool order = A.left();
+    *this = A.rotate_clock();
+    return order;
 }
 
 bool Matrix::down()
 {
     Matrix A = this -> rotate_counterclock();
-    if (A.right() == true)
-        return true;
-    return false;
+    bool order = A.right();
+    *this = A.rotate_clock();
+    return order;
 }
 
 bool Matrix::endgame()

@@ -59,16 +59,6 @@ int main(int argc, const char * argv[]) {
                     continue;
                 }
             }
-            else if (move == "s")
-            {
-                bool order = A.down();
-                if (order)
-                    count++;
-                else{
-                    cout << "Invalid move downwards. Try again";
-                    continue;
-                }
-            }
             else if (move == "d")
             {
                 bool order = A.right();
@@ -79,6 +69,7 @@ int main(int argc, const char * argv[]) {
                     continue;
                 }
             }
+            A.random();
             A.print();
         }
         cout << "Do you want to play another round?(y or n) ";
