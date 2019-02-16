@@ -54,6 +54,20 @@ bool Matrix :: left()
                 continue;
             else
             {
+                int index = left_find_nearest0(i,j);
+                if (index != j){
+                    m[i][index] = line[j];
+                    m[i][j] = 0;
+                    order = true;
+                }
+            }
+        }
+       /* for (int j = 1; j <= 3; j++)
+        {
+            if (line[j] == 0)
+                continue;
+            else
+            {
                 int k = 0;
                 while (k < j)
                 {
@@ -67,7 +81,7 @@ bool Matrix :: left()
                 }
             }
             
-        }
+        }*/
     }
     return order;
 }
@@ -121,7 +135,17 @@ bool Matrix::right()
     }
     return order;
 }
- 
+
+int Matrix::left_find_nearest0(int row, int col)
+{
+    int index = col;
+    int i = col - 1;
+    while (i >= 0 && m[row][i] == 0){
+        index = i;
+        i--;
+    }
+    return index;
+}
 Matrix Matrix::rotate_clock()
 {
     for (int i = 0; i <= 3; i++)

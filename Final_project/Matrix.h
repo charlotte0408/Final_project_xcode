@@ -26,6 +26,7 @@ public:
     bool full();
     bool find2048();
     bool endgame();
+    int left_find_nearest0(int row, int col);
     Matrix rotate_clock();
     Matrix rotate_counterclock();
     void print();
