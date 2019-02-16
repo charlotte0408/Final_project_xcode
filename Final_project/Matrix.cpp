@@ -10,6 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <iomanip>
 
 Matrix :: Matrix(int row, int col)
 {
@@ -55,6 +56,7 @@ bool Matrix :: left()
             else
             {
                 int index = left_find_nearest0(i,j);
+                cout << index << endl;
                 if (index != j){
                     m[i][index] = line[j];
                     m[i][j] = 0;
@@ -202,14 +204,14 @@ Matrix Matrix::rotate_counterclock()
 bool Matrix::up()
 {
     Matrix A = this -> rotate_counterclock();
-    A.print();
-    cout << endl;
+    //A.print();
+    //cout << endl;
     bool order = A.left();
-    A.print();
-    cout << endl;
+    //A.print();
+    //cout << endl;
     *this = A.rotate_clock();
-    print();
-    cout << endl;
+    //A.print();
+    //cout << endl;
     return order;
 }
 
@@ -295,7 +297,8 @@ void Matrix::print()
     for (int i = 0; i <= 3; i++)
     {
         for (int j = 0; j <= 3; j++)
-            cout << m[i][j] << " ";
+            cout << fixed << setw(6) << m[i][j] << " ";
+        cout << endl;
         cout << endl;
     }
 }
