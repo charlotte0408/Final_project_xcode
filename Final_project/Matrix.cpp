@@ -26,16 +26,15 @@ bool Matrix :: left()
     bool order = false;
     for (int i = 0; i <= 3; i++) // loop through rows
     {
-        vector <int> line = m[i];
         for (int j = 0; j< 3; j++) // start from the most left
         {
-            if (line[j+1] != 0 && line[j] != line[j+1]) // if jth is not equal to its next and its next is not empty, move to the next spot
+            if (m[i][j+1] != 0 && m[i][j] != m[i][j+1]) // if jth is not equal to its next and its next is not empty, move to the next spot
                 continue;
-            if (line[j] == 0) // if jth is empty, move to the next spot
+            if (m[i][j] == 0) // if jth is empty, move to the next spot
                 continue;
             for (int k = j+1; k <= 3; k++) // if (j+1)th is empty or jth is equal to its next
             {
-                if (line[j] == line[k])
+                if (m[i][j] == m[i][k])
                 {
                     m[i][j] = 2 * m[i][j];
                     m[i][k] = 0;
@@ -48,16 +47,15 @@ bool Matrix :: left()
     }
     for (int i = 0; i <= 3; i++)
     {
-        vector <int> line = m[i];
         for (int j = 1; j <= 3; j++)
         {
-            if (line[j] == 0)
+            if (m[i][j] == 0)
                 continue;
             else
             {
                 int index = left_find_nearest0(i,j);
                 if (index != j){
-                    m[i][index] = line[j];
+                    m[i][index] = m[i][j];
                     m[i][j] = 0;
                     order = true;
                 }
@@ -92,16 +90,15 @@ bool Matrix::right()
     bool order = false;
     for (int i = 0; i <= 3; i++)
     {
-        vector <int> line = m[i];
         for (int j = 3; j >= 1; j--) // start from the right most
         {
-            if (line[j] != line[j-1] && line[j-1] != 0) // next two are nonempty and not the same
+            if (m[i][j] != m[i][j-1] && m[i][j-1] != 0) // next two are nonempty and not the same
                 continue;
-            if (line[j] == 0)
+            if (m[i][j] == 0)
                 continue;
             for (int k = j-1; k >= 0; k--)
             {
-                if (line[j] == line[k])
+                if (m[i][j] == m[i][k])
                 {
                     m[i][j] = 2 * m[i][j];
                     m[i][k] = 0;
@@ -113,16 +110,15 @@ bool Matrix::right()
     }
     for (int i = 0; i <= 3; i++)
     {
-        vector <int> line = m[i];
         for (int j = 2; j >= 0; j--)
         {
-            if (line[j] == 0)
+            if (m[i][j] == 0)
                 continue;
             else
             {
                 int index = right_find_nearest0(i,j);
                 if (index != j){
-                    m[i][index] = line[j];
+                    m[i][index] = m[i][j];
                     m[i][j] = 0;
                     order = true;
                 }
