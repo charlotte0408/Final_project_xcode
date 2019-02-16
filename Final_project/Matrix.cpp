@@ -195,8 +195,14 @@ Matrix Matrix::rotate_counterclock()
 bool Matrix::up()
 {
     Matrix A = this -> rotate_counterclock();
+    A.print();
+    cout << endl;
     bool order = A.left();
+    A.print();
+    cout << endl;
     *this = A.rotate_clock();
+    print();
+    cout << endl;
     return order;
 }
 
