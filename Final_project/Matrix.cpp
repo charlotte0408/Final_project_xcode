@@ -56,7 +56,6 @@ bool Matrix :: left()
             else
             {
                 int index = left_find_nearest0(i,j);
-                cout << index << endl;
                 if (index != j){
                     m[i][index] = line[j];
                     m[i][j] = 0;
