@@ -61,11 +61,12 @@ bool Matrix :: left()
                         m[i][k] = m[i][j];
                         m[i][j] = 0;
                         order = true;
-                        break;
                     }
                     k++;
+                    break;
                 }
             }
+            
         }
     }
     return order;
