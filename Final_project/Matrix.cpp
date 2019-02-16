@@ -119,16 +119,11 @@ bool Matrix::right()
                 continue;
             else
             {
-                int k = 3;
-                while (k > j)
-                {
-                    if (line[k] == 0){
-                        m[i][k] = m[i][j];
-                        m[i][j] = 0;
-                        order = true;
-                        break;
-                    }
-                    k--;
+                int index = right_find_nearest0(i,j);
+                if (index != j){
+                    m[i][index] = line[j];
+                    m[i][j] = 0;
+                    order = true;
                 }
             }
         }
@@ -146,6 +141,18 @@ int Matrix::left_find_nearest0(int row, int col)
     }
     return index;
 }
+
+int Matrix::right_find_nearest0(int row, int col)
+{
+    int index = col;
+    int i = col + 1;
+    while (i <= 3 && m[row][i] == 0){
+        index = i;
+        i++;
+    }
+    return index;
+}
+
 Matrix Matrix::rotate_clock()
 {
     for (int i = 0; i <= 3; i++)
